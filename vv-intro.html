@@ -1,0 +1,108 @@
+<style>
+  /* CRITICAL: Hide page content until intro is ready */
+  html { background: #050505 !important; }
+  body { opacity: 0 !important; }
+  body.vv-ready { opacity: 1 !important; }
+
+  #vv-intro {
+    animation: vv-curtain 0.6s cubic-bezier(0.33, 1, 0.68, 1) 1.5s forwards;
+  }
+  #vv-intro.vv-done { display: none !important; }
+
+  #vv-intro .vv-vignette {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.85) 100%);
+  }
+  #vv-intro .vv-grain {
+    position: absolute; inset: 0;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  #vv-intro .vv-stage { position: relative; text-align: center; z-index: 2; }
+
+  #vv-intro .vv-mark {
+    width: 1px; height: 48px; margin: 0 auto 32px;
+    background: linear-gradient(180deg, transparent, rgba(212,175,107,0.95) 50%, transparent);
+    transform: scaleY(0);
+    animation: vv-mark 600ms cubic-bezier(0.22,1,0.36,1) 0s forwards;
+  }
+  #vv-intro .vv-name {
+    margin: 0;
+    font-family: "Times New Roman", "Didot", serif;
+    color: #f5f1e8;
+    font-size: clamp(22px, 5.5vw, 38px);
+    font-weight: 300;
+    letter-spacing: 0.55em;
+    padding-left: 0.55em;
+    opacity: 0;
+    animation: vv-name 750ms cubic-bezier(0.22,1,0.36,1) 0.35s forwards,
+               vv-track 750ms cubic-bezier(0.22,1,0.36,1) 0.35s forwards;
+  }
+  #vv-intro .vv-line {
+    width: 140px; height: 1px; margin: 26px auto 0;
+    background: linear-gradient(90deg, transparent, rgba(212,175,107,0.85) 50%, transparent);
+    transform: scaleX(0);
+    animation: vv-line 650ms cubic-bezier(0.22,1,0.36,1) 0.65s forwards;
+  }
+  #vv-intro .vv-tag {
+    margin-top: 18px;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: rgba(212,175,107,0.75);
+    font-size: 10px; letter-spacing: 0.5em; padding-left: 0.5em;
+    opacity: 0;
+    animation: vv-tag 550ms ease 1s forwards;
+  }
+
+  @keyframes vv-mark { to { transform: scaleY(1); } }
+  @keyframes vv-name {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes vv-track {
+    0% { letter-spacing: 0.7em; }
+    100% { letter-spacing: 0.55em; }
+  }
+  @keyframes vv-line { to { transform: scaleX(1); } }
+  @keyframes vv-tag { to { opacity: 0.85; } }
+  @keyframes vv-curtain {
+    to { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #vv-intro { animation: vv-curtain 0.3s ease 0.5s forwards; }
+    #vv-intro * { animation-duration: 200ms !important; animation-delay: 0ms !important; }
+  }
+</style>
+
+<div id="vv-intro" aria-hidden="true" style="position:fixed;inset:0;background:#050505;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;pointer-events:none;">
+  <div class="vv-vignette"></div>
+  <div class="vv-grain"></div>
+  <div class="vv-stage">
+    <div class="vv-mark"></div>
+    <h1 class="vv-name">VIRAL VAULT</h1>
+    <div class="vv-line"></div>
+    <div class="vv-tag">EST&nbsp;·&nbsp;MMXXVI</div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    // Immediately reveal body — intro is already covering it
+    document.body.classList.add('vv-ready');
+
+    var intro = document.getElementById('vv-intro');
+    if (!intro) return;
+    var killed = false;
+    function kill(){
+      if (killed) return;
+      killed = true;
+      intro.classList.add('vv-done');
+      setTimeout(function(){ if (intro.parentNode) intro.parentNode.removeChild(intro); }, 100);
+    }
+    intro.addEventListener('animationend', function(e){
+      if (e.animationName === 'vv-curtain') kill();
+    });
+    setTimeout(kill, 3500);
+  })();
+</script>
