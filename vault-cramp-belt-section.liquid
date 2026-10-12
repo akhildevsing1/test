@@ -1,0 +1,635 @@
+{%- comment -%}
+  ============================================================
+  VAULT™ 3-IN-1 PERIOD CRAMP BELT — PDP SECTION (video build)
+  File: vault-cramp-belt-section.liquid
+  Paste into: Theme editor → product template → Custom Liquid block
+  REPLACES the previous .vb block. Do not run both.
+
+  EDIT COPY IN THE CONFIG BLOCK BELOW. Nothing else needs touching.
+  Video URLs: Shopify admin → Content → Files → upload → copy link.
+  ============================================================
+{%- endcomment -%}
+
+{%- comment -%} ============ CONFIG — EDIT THIS ============ {%- endcomment -%}
+
+{%- assign v_maxw  = '400px' -%}
+
+{%- assign v1_src     = 'https://cdn.shopify.com/videos/c/vp/be8e71f6e28b4c239de5d394d61f3449/be8e71f6e28b4c239de5d394d61f3449.SD-480p-1.2Mbps-93927327.mp4' -%}
+{%- assign v1_eyebrow = 'Three lights, three levels' -%}
+{%- assign v1_head    = 'Three heat settings, one button.' -%}
+{%- assign v1_body    = 'One press cycles through low, medium and high. The light on the front tells you where you are without taking it off to look.' -%}
+
+{%- assign v2_src     = 'https://cdn.shopify.com/videos/c/vp/3cb347c889e6445591b92fcbb17564b8/3cb347c889e6445591b92fcbb17564b8.SD-480p-1.5Mbps-93927328.mp4' -%}
+{%- assign v2_eyebrow = 'Set it up once' -%}
+{%- assign v2_head    = 'Charge it, strap it on, forget it is there.' -%}
+{%- assign v2_body    = 'Two hours on USB-C fills it. The strap adjusts from 25 to 45 inches and stays where you put it — no re-tightening every time you stand up.' -%}
+
+{%- assign v3_src     = 'https://cdn.shopify.com/videos/c/vp/9a80b91142f746f2a6ac9b382937236c/9a80b91142f746f2a6ac9b382937236c.SD-480p-1.5Mbps-93927329.mp4' -%}
+{%- assign v3_eyebrow = 'Off the charger' -%}
+{%- assign v3_head    = 'A hot water bottle starts cooling the moment you fill it.' -%}
+{%- assign v3_body    = 'This one picks a temperature and holds it there for three to four hours. No refilling. No plug. No cord trailing behind you.' -%}
+
+{%- assign v4_src     = 'https://cdn.shopify.com/videos/c/vp/d0e7e0172c2c4f9994666d4e998cda44/d0e7e0172c2c4f9994666d4e998cda44.SD-480p-1.5Mbps-93927330.mp4' -%}
+{%- assign v4_eyebrow = 'Front or back' -%}
+{%- assign v4_head    = 'Belly today. Lower back tomorrow.' -%}
+{%- assign v4_body    = 'Turn the belt around and the same panel sits across your lower back. Slim enough to keep on through a work day without anyone noticing.' -%}
+
+{%- assign v5_src     = 'https://cdn.shopify.com/videos/c/vp/05a0106ccc1849f0b19a78267ea6e1b3/05a0106ccc1849f0b19a78267ea6e1b3.SD-480p-1.5Mbps-93927331.mp4' -%}
+{%- assign v5_eyebrow = 'How it goes on' -%}
+{%- assign v5_head    = 'Made to be worn, not endured.' -%}
+{%- assign v5_body    = 'Every part of it is there so you can put it on in a few seconds and stop thinking about it.' -%}
+
+{%- comment -%} ============ END CONFIG ============ {%- endcomment -%}
+
+{%- assign vb_variant = product.selected_or_first_available_variant -%}
+{%- assign vb_price_raw = vb_variant.price | default: 0 -%}
+{%- assign vb_price = vb_price_raw | money_without_trailing_zeros -%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+.vb,.vb *,.vb *::before,.vb *::after{margin:0;padding:0;box-sizing:border-box}
+.vb{
+  --ink:#0B0810; --ash:#151120; --line:rgba(255,255,255,.10);
+  --text:#EFE7F2; --mute:rgba(239,231,242,.56); --dim:rgba(239,231,242,.34);
+  --t50:#FFC96B; --t55:#FF8A5C; --t60:#F2546E;
+  --rose:#F2546E; --gold:#E6B45A; --cool:#5B6B8C;
+  --serif:'DM Serif Display',Georgia,serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  background:var(--ink); color:var(--text); font-family:var(--sans);
+  line-height:1.55; -webkit-font-smoothing:antialiased;
+  overflow-x:clip;
+}
+.vb a{color:inherit;text-decoration:none}
+.vb-wrap{max-width:660px;margin:0 auto;padding:0 20px}
+.vb-mod{padding:52px 0;border-top:1px solid var(--line)}
+.vb-mod:first-child{border-top:0}
+.vb-mod--late{content-visibility:auto;contain-intrinsic-size:auto 520px}
+
+/* ---- type ---- */
+.vb-eyebrow{font-family:var(--mono);font-size:.63rem;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block}
+.vb-h{font-family:var(--serif);font-weight:400;font-size:clamp(1.55rem,5.6vw,2.15rem);
+  line-height:1.18;letter-spacing:-.01em;color:#fff;margin-bottom:12px}
+.vb-p{font-size:.95rem;color:var(--mute);max-width:44ch}
+.vb-note{font-family:var(--mono);font-size:.66rem;line-height:1.6;color:var(--dim);margin-top:14px}
+
+/* ---- reveal ---- */
+.vb-r{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.vb-in .vb-r{opacity:1;transform:none}
+.vb-in .vb-r:nth-child(2){transition-delay:.06s}
+.vb-in .vb-r:nth-child(3){transition-delay:.12s}
+
+/* ---- video ---- */
+.vb-vid{margin:0 auto 26px;border-radius:14px;overflow:hidden;
+  background:var(--ash);border:1px solid var(--line);
+  max-width:{{ v_maxw }}}
+.vb-vid video{display:block;width:100%;height:auto}
+.vb-vid video::-webkit-media-controls{display:none!important}
+.vb-vid video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
+
+/* ---- temperature dial (ch 01) ---- */
+.vb-dial{margin-top:24px;background:var(--ash);border:1px solid var(--line);border-radius:14px;padding:20px 18px}
+.vb-dial input{position:absolute;opacity:0;width:0;height:0}
+.vb-pills{display:flex;gap:8px}
+.vb-pills label{flex:1;text-align:center;padding:13px 4px;border-radius:10px;cursor:pointer;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);
+  font-family:var(--mono);font-size:1.05rem;font-weight:700;color:var(--mute);
+  transition:all .3s var(--ease)}
+.vb-pills label small{display:block;font-size:.58rem;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;margin-top:5px;color:var(--dim)}
+.vb-dial input:focus-visible+label{outline:2px solid var(--gold);outline-offset:2px}
+.vb-dial:has(#vb-h50:checked) label[for=vb-h50]{background:rgba(255,201,107,.12);border-color:rgba(255,201,107,.45);color:var(--t50)}
+.vb-dial:has(#vb-h55:checked) label[for=vb-h55]{background:rgba(255,138,92,.12);border-color:rgba(255,138,92,.45);color:var(--t55)}
+.vb-dial:has(#vb-h60:checked) label[for=vb-h60]{background:rgba(242,84,110,.12);border-color:rgba(242,84,110,.45);color:var(--t60)}
+.vb-bar{height:6px;border-radius:3px;margin:18px 0 14px;background:rgba(255,255,255,.06);overflow:hidden}
+.vb-bar i{display:block;height:100%;border-radius:3px;width:33%;
+  background:linear-gradient(90deg,var(--t50),var(--t55));transition:width .45s var(--ease),background .45s ease}
+.vb-dial:has(#vb-h55:checked) .vb-bar i{width:66%;background:linear-gradient(90deg,var(--t50),var(--t55),var(--t60))}
+.vb-dial:has(#vb-h60:checked) .vb-bar i{width:100%;background:linear-gradient(90deg,var(--t55),var(--t60))}
+.vb-cap{font-size:.86rem;color:var(--mute);min-height:2.6em}
+.vb-cap>span{display:none}
+.vb-dial:has(#vb-h50:checked) .vb-cap span[data-h="50"]{display:block}
+.vb-dial:has(#vb-h55:checked) .vb-cap span[data-h="55"]{display:block}
+.vb-dial:has(#vb-h60:checked) .vb-cap span[data-h="60"]{display:block}
+.vb-safe{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);
+  font-size:.78rem;line-height:1.65;color:var(--dim)}
+.vb-safe b{color:var(--gold);font-weight:600}
+
+/* ---- waist scale (ch 02) ---- */
+.vb-scale{margin-top:24px;background:var(--ash);border:1px solid var(--line);border-radius:14px;padding:22px 18px 18px}
+.vb-scale-track{height:8px;border-radius:4px;background:rgba(255,255,255,.06);overflow:hidden}
+.vb-scale-track i{display:block;height:100%;width:0;border-radius:4px;
+  background:linear-gradient(90deg,var(--t50),var(--t55),var(--t60));transition:width 1.4s var(--ease) .25s}
+.vb-in .vb-scale-track i{width:100%}
+.vb-scale-ticks{display:flex;justify-content:space-between;margin-top:11px;
+  font-family:var(--mono);font-size:.7rem;color:var(--dim)}
+.vb-scale-ticks b{color:#fff;font-weight:700}
+.vb-scale p{margin-top:14px;font-size:.84rem;color:var(--mute)}
+
+/* ---- heat decay chart (ch 03) ---- */
+.vb-chart{margin-top:26px;background:var(--ash);border:1px solid var(--line);
+  border-radius:14px;padding:18px 14px 12px}
+.vb-chart svg{display:block;width:100%;height:auto}
+.vb-chart .grid{stroke:rgba(255,255,255,.07);stroke-width:1}
+.vb-chart .thresh{stroke:rgba(255,255,255,.22);stroke-width:1;stroke-dasharray:3 4}
+.vb-chart .axis{font-family:var(--mono);font-size:8px;fill:var(--dim)}
+.vb-chart .tag{font-family:var(--mono);font-size:8.5px;font-weight:700}
+.vb-chart .ln{fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:100;stroke-dashoffset:100}
+.vb-chart .ln--belt{stroke:url(#vbHot)}
+.vb-chart .ln--bottle{stroke:var(--cool)}
+.vb-chart .area{fill:url(#vbArea);opacity:0}
+.vb-in .vb-chart .ln--bottle{animation:vbDraw 1.1s var(--ease) .1s forwards}
+.vb-in .vb-chart .ln--belt{animation:vbDraw 1.5s var(--ease) .45s forwards}
+.vb-in .vb-chart .area{animation:vbFade .8s ease 1.3s forwards}
+.vb-in .vb-chart .dot{animation:vbFade .5s ease 1.5s forwards}
+.vb-chart .dot{opacity:0}
+@keyframes vbDraw{to{stroke-dashoffset:0}}
+@keyframes vbFade{to{opacity:1}}
+.vb-key{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;
+  font-family:var(--mono);font-size:.66rem;color:var(--mute)}
+.vb-key i{display:inline-block;width:14px;height:2px;vertical-align:middle;margin-right:6px;border-radius:2px}
+
+/* ---- front / back toggle (ch 04) ---- */
+.vb-toggle{margin-top:24px;background:var(--ash);border:1px solid var(--line);border-radius:14px;padding:20px 18px}
+.vb-toggle input{position:absolute;opacity:0;width:0;height:0}
+.vb-tabs{display:flex;gap:8px}
+.vb-tabs label{flex:1;text-align:center;padding:14px 4px;border-radius:10px;cursor:pointer;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);
+  font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--mute);transition:all .3s var(--ease)}
+.vb-toggle input:focus-visible+label{outline:2px solid var(--gold);outline-offset:2px}
+.vb-toggle:has(#vb-front:checked) label[for=vb-front]{background:rgba(242,84,110,.12);border-color:rgba(242,84,110,.45);color:var(--t60)}
+.vb-toggle:has(#vb-back:checked) label[for=vb-back]{background:rgba(255,138,92,.12);border-color:rgba(255,138,92,.45);color:var(--t55)}
+.vb-tcap{margin-top:16px;font-size:.86rem;color:var(--mute);min-height:3.5em}
+.vb-tcap>span{display:none}
+.vb-toggle:has(#vb-front:checked) .vb-tcap span[data-p="front"]{display:block}
+.vb-toggle:has(#vb-back:checked) .vb-tcap span[data-p="back"]{display:block}
+
+/* ---- anatomy list (ch 05) ---- */
+.vb-parts{margin-top:22px;counter-reset:vbp}
+.vb-parts div{display:flex;gap:14px;padding:15px 0;border-top:1px solid var(--line)}
+.vb-parts div:first-child{border-top:0;padding-top:0}
+.vb-parts div::before{counter-increment:vbp;content:'0' counter(vbp);
+  font-family:var(--mono);font-size:.66rem;font-weight:700;color:var(--gold);
+  padding-top:3px;flex-shrink:0}
+.vb-parts b{display:block;font-size:.9rem;color:#fff;font-weight:600;margin-bottom:3px}
+.vb-parts span{display:block;font-size:.82rem;color:var(--mute);line-height:1.5}
+
+/* ---- compare ---- */
+.vb-tbl{width:100%;border-collapse:collapse;margin-top:20px;font-size:.8rem}
+.vb-tbl th,.vb-tbl td{padding:12px 8px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.vb-tbl thead th{font-family:var(--mono);font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--dim);font-weight:700;padding-bottom:9px}
+.vb-tbl thead th:last-child{color:var(--rose)}
+.vb-tbl tbody th{font-weight:500;color:var(--mute);width:26%}
+.vb-tbl td{color:var(--dim);font-family:var(--mono);font-size:.74rem}
+.vb-tbl td:last-child{color:#fff;font-weight:700}
+
+/* ---- specs ---- */
+.vb-specs{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:20px;
+  background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.vb-specs div{background:var(--ink);padding:14px 13px}
+.vb-specs dt{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:5px}
+.vb-specs dd{font-size:.86rem;color:#fff;font-weight:500}
+
+/* ---- faq ---- */
+.vb-faq{margin-top:12px}
+.vb-faq details{border-bottom:1px solid var(--line)}
+.vb-faq summary{list-style:none;cursor:pointer;padding:17px 34px 17px 0;position:relative;
+  font-size:.93rem;font-weight:500;color:#fff}
+.vb-faq summary::-webkit-details-marker{display:none}
+.vb-faq summary::after{content:'+';position:absolute;right:6px;top:15px;
+  font-family:var(--mono);font-size:1.1rem;color:var(--rose);transition:transform .3s var(--ease)}
+.vb-faq details[open] summary::after{transform:rotate(45deg)}
+.vb-faq summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.vb-faq p{font-size:.86rem;color:var(--mute);padding:0 8px 18px 0;max-width:52ch}
+
+/* ---- close ---- */
+.vb-close{text-align:center}
+.vb-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 26px;text-align:left}
+.vb-steps div{padding:13px 12px;background:var(--ash);border:1px solid var(--line);border-radius:11px}
+.vb-steps b{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.vb-steps span{font-size:.76rem;color:var(--mute);line-height:1.45}
+.vb-cta{display:block;width:100%;padding:18px 24px;border:0;border-radius:12px;cursor:pointer;
+  background:linear-gradient(135deg,var(--t55),var(--t60));color:#fff;
+  font-family:var(--sans);font-size:1rem;font-weight:700;letter-spacing:.01em;
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.vb-cta:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(242,84,110,.28)}
+.vb-cta:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.vb-cta[data-busy="1"]{opacity:.6;pointer-events:none}
+.vb-under{margin-top:13px;font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;color:var(--dim)}
+.vb-flash{animation:vbFlash 1.1s ease 2}
+@keyframes vbFlash{0%,100%{box-shadow:0 0 0 0 rgba(242,84,110,0)}50%{box-shadow:0 0 0 5px rgba(242,84,110,.4)}}
+
+@media(min-width:640px){
+  .vb-mod{padding:64px 0}
+}
+@media(prefers-reduced-motion:reduce){
+  .vb *,.vb *::before,.vb *::after{animation-duration:.01ms!important;animation-delay:0ms!important;
+    transition-duration:.01ms!important}
+  .vb-r{opacity:1;transform:none}
+  .vb-chart .ln{stroke-dashoffset:0}
+  .vb-chart .area,.vb-chart .dot{opacity:1}
+  .vb-scale-track i{width:100%}
+}
+
+/* ---- social proof bar ---- */
+.vb-proof{display:flex;align-items:center;justify-content:center;gap:16px;
+  padding:14px 20px;border-bottom:1px solid var(--line)}
+.vb-proof-stars{display:flex;align-items:center;gap:6px}
+.vb-proof-stars svg{flex-shrink:0}
+.vb-proof-rating{font-family:var(--mono);font-size:.82rem;font-weight:700;color:#fff}
+.vb-proof-dot{width:3px;height:3px;border-radius:50%;background:var(--dim);flex-shrink:0}
+.vb-proof-count{font-family:var(--mono);font-size:.72rem;font-weight:500;color:var(--mute);
+  letter-spacing:.02em}
+</style>
+
+<div class="vb" id="vb-root">
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <linearGradient id="vbHot" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFC96B"/><stop offset="55%" stop-color="#FF8A5C"/><stop offset="100%" stop-color="#F2546E"/>
+    </linearGradient>
+    <linearGradient id="vbArea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF8A5C" stop-opacity=".22"/><stop offset="100%" stop-color="#FF8A5C" stop-opacity="0"/>
+    </linearGradient>
+  </defs></svg>
+
+  <!-- social proof bar -->
+  <div class="vb-proof">
+    <div class="vb-proof-stars">
+      <svg width="80" height="14" viewBox="0 0 80 14" fill="none" aria-hidden="true">
+        <path d="M7 1.2l1.76 3.57 3.94.57-2.85 2.78.67 3.93L7 10.22 3.48 12.05l.67-3.93L1.3 5.34l3.94-.57L7 1.2z" fill="#E6B45A"/>
+        <path d="M23 1.2l1.76 3.57 3.94.57-2.85 2.78.67 3.93L23 10.22l-3.52 1.83.67-3.93-2.85-2.78 3.94-.57L23 1.2z" fill="#E6B45A"/>
+        <path d="M39 1.2l1.76 3.57 3.94.57-2.85 2.78.67 3.93L39 10.22l-3.52 1.83.67-3.93-2.85-2.78 3.94-.57L39 1.2z" fill="#E6B45A"/>
+        <path d="M55 1.2l1.76 3.57 3.94.57-2.85 2.78.67 3.93L55 10.22l-3.52 1.83.67-3.93-2.85-2.78 3.94-.57L55 1.2z" fill="#E6B45A"/>
+        <path d="M71 1.2l1.76 3.57 3.94.57-2.85 2.78.67 3.93L71 10.22l-3.52 1.83.67-3.93-2.85-2.78 3.94-.57L71 1.2z" fill="#E6B45A"/>
+        <rect x="71" y="0" width="9" height="14" fill="#0B0810" opacity=".7"/>
+      </svg>
+      <span class="vb-proof-rating">4.7</span>
+    </div>
+    <span class="vb-proof-dot"></span>
+    <span class="vb-proof-count">10,000+ happy customers</span>
+  </div>
+
+  <!-- CH 01 — lights + heat dial -->
+  <section class="vb-mod" data-vb-reveal>
+    <div class="vb-wrap">
+      {%- if v1_src != blank -%}
+      <div class="vb-vid vb-r"><video src="{{ v1_src }}" muted loop playsinline preload="none"></video></div>
+      {%- endif -%}
+      <span class="vb-eyebrow vb-r">{{ v1_eyebrow }}</span>
+      <h2 class="vb-h vb-r">{{ v1_head }}</h2>
+      <p class="vb-p vb-r">{{ v1_body }}</p>
+
+      <div class="vb-dial vb-r">
+        <input type="radio" name="vb-heat" id="vb-h50">
+        <input type="radio" name="vb-heat" id="vb-h55" checked>
+        <input type="radio" name="vb-heat" id="vb-h60">
+        <div class="vb-pills">
+          <label for="vb-h50">50°<small>Low</small></label>
+          <label for="vb-h55">55°<small>Medium</small></label>
+          <label for="vb-h60">60°<small>High</small></label>
+        </div>
+        <div class="vb-bar"><i></i></div>
+        <div class="vb-cap">
+          <span data-h="50">Gentle background warmth. The setting to use in the evening, and the one that stretches the battery furthest.</span>
+          <span data-h="55">The setting most people stay on. Clearly warm through a t-shirt or kurti, comfortable for a full work morning.</span>
+          <span data-h="60">Strong, deep heat for the worst hours of day one. Keep sessions short at this level.</span>
+        </div>
+        <p class="vb-safe"><b>Wear it over a layer of clothing</b> — never against bare skin. Start low, take it off every 20–30 minutes, and switch it off before you fall asleep. Don't use it on numb skin, broken skin, or over a heat rash.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH 02 — charge + fit -->
+  <section class="vb-mod" data-vb-reveal>
+    <div class="vb-wrap">
+      {%- if v2_src != blank -%}
+      <div class="vb-vid vb-r"><video src="{{ v2_src }}" muted loop playsinline preload="none"></video></div>
+      {%- endif -%}
+      <span class="vb-eyebrow vb-r">{{ v2_eyebrow }}</span>
+      <h2 class="vb-h vb-r">{{ v2_head }}</h2>
+      <p class="vb-p vb-r">{{ v2_body }}</p>
+
+      <div class="vb-scale vb-r">
+        <div class="vb-scale-track"><i></i></div>
+        <div class="vb-scale-ticks">
+          <span><b>25"</b> waist</span>
+          <span><b>45"</b> waist</span>
+        </div>
+        <p>Sits flat under a kurti, jeans or a work shirt. The controls stay on the outside of the belt, so you adjust it without unstrapping.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH 03 — off the charger + decay chart -->
+  <section class="vb-mod" data-vb-reveal>
+    <div class="vb-wrap">
+      {%- if v3_src != blank -%}
+      <div class="vb-vid vb-r"><video src="{{ v3_src }}" muted loop playsinline preload="none"></video></div>
+      {%- endif -%}
+      <span class="vb-eyebrow vb-r">{{ v3_eyebrow }}</span>
+      <h2 class="vb-h vb-r">{{ v3_head }}</h2>
+      <p class="vb-p vb-r">{{ v3_body }}</p>
+
+      <div class="vb-chart vb-r">
+        <svg viewBox="0 0 320 176" role="img" aria-label="Chart: the belt holds a steady temperature for about three and a half hours, while a hot water bottle cools steadily from the moment it is filled.">
+          <line class="grid" x1="24" y1="36" x2="308" y2="36"/>
+          <line class="grid" x1="24" y1="132" x2="308" y2="132"/>
+          <line class="thresh" x1="24" y1="86" x2="308" y2="86"/>
+          <text class="axis" x="26" y="82">comfortable warmth</text>
+
+          <path class="area" d="M24 132 L31 46 L252 46 L272 62 L300 128 L300 132 Z"/>
+          <path class="ln ln--bottle" pathLength="100" d="M24 132 L30 42 C46 56 62 88 93 108 C112 122 128 130 142 132 L300 132"/>
+          <path class="ln ln--belt" pathLength="100" d="M24 132 L31 46 L252 46 L272 62 L300 128"/>
+
+          <circle class="dot" cx="252" cy="46" r="3.2" fill="#FF8A5C"/>
+          <text class="tag dot" x="238" y="36" fill="#FF8A5C" text-anchor="end">still warm at 3h 30m</text>
+          <circle class="dot" cx="62" cy="88" r="3" fill="#5B6B8C"/>
+          <text class="tag dot" x="72" y="104" fill="#7C8AAA">bottle drops off</text>
+
+          <text class="axis" x="24" y="146">0</text>
+          <text class="axis" x="86" y="146">1h</text>
+          <text class="axis" x="155" y="146">2h</text>
+          <text class="axis" x="224" y="146">3h</text>
+          <text class="axis" x="294" y="146">4h</text>
+        </svg>
+        <div class="vb-key">
+          <span><i style="background:linear-gradient(90deg,#FFC96B,#F2546E)"></i>Vault belt</span>
+          <span><i style="background:#5B6B8C"></i>Hot water bottle</span>
+        </div>
+      </div>
+      <p class="vb-note vb-r">Illustrative comparison. A filled bottle has no heat source, so it only loses heat. The belt reheats itself off the battery until the charge runs out.</p>
+    </div>
+  </section>
+
+  <!-- CH 04 — front / back -->
+  <section class="vb-mod" data-vb-reveal>
+    <div class="vb-wrap">
+      {%- if v4_src != blank -%}
+      <div class="vb-vid vb-r"><video src="{{ v4_src }}" muted loop playsinline preload="none"></video></div>
+      {%- endif -%}
+      <span class="vb-eyebrow vb-r">{{ v4_eyebrow }}</span>
+      <h2 class="vb-h vb-r">{{ v4_head }}</h2>
+      <p class="vb-p vb-r">{{ v4_body }}</p>
+
+      <div class="vb-toggle vb-r">
+        <input type="radio" name="vb-pos" id="vb-front" checked>
+        <input type="radio" name="vb-pos" id="vb-back">
+        <div class="vb-tabs">
+          <label for="vb-front">On the belly</label>
+          <label for="vb-back">On the back</label>
+        </div>
+        <div class="vb-tcap">
+          <span data-p="front">Worn low across the abdomen for period cramps. Strap it on before you leave and leave it on through the commute, class or the morning shift.</span>
+          <span data-p="back">Turned around, the panel covers the lower back — the same heat and the same four massage modes, for the ache that comes from sitting all day.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH 05 — anatomy -->
+  <section class="vb-mod" data-vb-reveal>
+    <div class="vb-wrap">
+      {%- if v5_src != blank -%}
+      <div class="vb-vid vb-r"><video src="{{ v5_src }}" muted loop playsinline preload="none"></video></div>
+      {%- endif -%}
+      <span class="vb-eyebrow vb-r">{{ v5_eyebrow }}</span>
+      <h2 class="vb-h vb-r">{{ v5_head }}</h2>
+      <p class="vb-p vb-r">{{ v5_body }}</p>
+
+      <div class="vb-parts vb-r">
+        <div><p><b>One control button</b><span>Cycles the three heat levels and the four massage modes. Reachable through a layer of clothing.</span></p></div>
+        <div><p><b>Quick-release buckle</b><span>Press to open, click to close. No threading the strap back through anything.</span></p></div>
+        <div><p><b>Soft cushioned panel</b><span>The heat sits behind padding, not against a hard shell, so it presses into you rather than digging in.</span></p></div>
+        <div><p><b>Adjustable strap</b><span>Pull to tighten, and it holds. Loosen it when you sit down without taking the belt off.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- compare -->
+  <section class="vb-mod vb-mod--late" data-vb-reveal>
+    <div class="vb-wrap">
+      <span class="vb-eyebrow vb-r">Side by side</span>
+      <table class="vb-tbl vb-r">
+        <thead><tr><th></th><th>Hot water bottle</th><th>Corded pad</th><th>Vault belt</th></tr></thead>
+        <tbody>
+          <tr><th>Ready in</th><td>Boil + fill</td><td>2–5 min</td><td>30 sec</td></tr>
+          <tr><th>Stays warm</th><td>Cools steadily</td><td>While plugged in</td><td>3–4 hrs</td></tr>
+          <tr><th>Leave the house</th><td>No</td><td>No</td><td>Yes</td></tr>
+          <tr><th>Massage</th><td>—</td><td>Rare</td><td>4 modes</td></tr>
+          <tr><th>Hands free</th><td>Hold it</td><td>Lie down</td><td>Straps on</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- specs -->
+  <section class="vb-mod vb-mod--late" data-vb-reveal>
+    <div class="vb-wrap">
+      <span class="vb-eyebrow vb-r">In the box</span>
+      <dl class="vb-specs vb-r">
+        <div><dt>Heat levels</dt><dd>50° / 55° / 60°C</dd></div>
+        <div><dt>Massage</dt><dd>4 vibration modes</dd></div>
+        <div><dt>Runtime</dt><dd>3–4 hours</dd></div>
+        <div><dt>Charging</dt><dd>USB-C, ~2 hrs</dd></div>
+        <div><dt>Heating</dt><dd>Graphene film</dd></div>
+        <div><dt>Wear on</dt><dd>Belly, back, waist</dd></div>
+        <div><dt>Safety</dt><dd>Auto shut-off</dd></div>
+        <div><dt>Colour</dt><dd>Pink</dd></div>
+      </dl>
+    </div>
+
+
+
+1. Think Before Coding
+Don't assume. Don't hide confusion. Surface tradeoffs. Before implementing:
+
+* State your assumptions explicitly.
+* If uncertain, ask.
+* If multiple interpretations exist, present them — don't pick silently.
+* If a simpler approach exists, say so. Push back when warranted.
+* If something is unclear, stop. Name what's confusing. Ask.
+
+2. Simplicity First
+Minimum code that solves the problem. Nothing speculative.
+
+* No features beyond what was asked.
+* No abstractions for single-use code.
+* No "flexibility" or "configurability" that wasn't requested.
+* No error handling for impossible scenarios.
+* If you write 200 lines and it could be 50, rewrite it.
+
+Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
+3. Surgical Changes
+Touch only what you must. Clean up only your own mess. When editing existing code:
+
+* Don't "improve" adjacent code, comments, or formatting.
+* Don't refactor things that aren't broken.
+* Match existing style, even if you'd do it differently.
+* If you notice unrelated dead code, mention it — don't delete it.
+
+When your changes create orphans:
+
+* Remove imports/variables/functions that your changes made unused.
+* Don't remove pre-existing dead code unless asked.
+
+The test: Every changed line should trace directly to the user's request.
+4. Goal-Driven Execution
+Define success criteria. Loop until verified. Transform tasks into verifiable goals:
+
+* "Add validation" → "Write tests for invalid inputs, then make them pass"
+* "Fix the bug" → "Write a test that reproduces it, then make it pass"
+* "Refactor X" → "Ensure tests pass before and after"
+
+For multi-step tasks, state a brief plan:
+
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
+
+  </section>
+
+  <!-- objections -->
+  <section class="vb-mod vb-mod--late" data-vb-reveal>
+    <div class="vb-wrap">
+      <span class="vb-eyebrow vb-r">Before you order</span>
+      <div class="vb-faq vb-r">
+        <details>
+          <summary>Will it fit me?</summary>
+          <p>The strap is adjustable and fits roughly a 25–45 inch waist. Wear it low across the abdomen, or turn it around to sit on your lower back.</p>
+        </details>
+        <details>
+          <summary>Can I wear it under clothes at work or college?</summary>
+          <p>Yes. It's slim enough to sit under a kurti, jeans or trousers, and the strap keeps it from shifting while you move. The controls are on the belt itself.</p>
+        </details>
+        <details>
+          <summary>Is it safe to sleep in?</summary>
+          <p>No — switch it off before you sleep. It has auto shut-off, but any heated device left on skin for hours can irritate it, and you won't feel it happening. Use it to get comfortable, then take it off.</p>
+        </details>
+        <details>
+          <summary>What if it arrives damaged or doesn't work?</summary>
+          <p>Message us on WhatsApp at +91 70063 01185 with a photo or a short video within 7 days and we'll replace it or refund you. No forms, no runaround.</p>
+        </details>
+        <details>
+          <summary>When will it reach me?</summary>
+          <p>3–7 working days across India, tracked. You'll get the tracking link by SMS and WhatsApp once it's picked up.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- close -->
+  <section class="vb-mod vb-mod--late" data-vb-reveal>
+    <div class="vb-wrap vb-close">
+      <span class="vb-eyebrow vb-r">Pay when it arrives</span>
+      <h2 class="vb-h vb-r">You don't pay anything today.</h2>
+      <div class="vb-steps vb-r">
+        <div><b>Step 1</b><span>Place the order — no card needed</span></div>
+        <div><b>Step 2</b><span>We confirm on WhatsApp and ship</span></div>
+        <div><b>Step 3</b><span>Pay cash at your door</span></div>
+      </div>
+      <button type="button" class="vb-cta vb-r" data-vb-atc="{{ vb_variant.id }}">
+        Add to cart — {{ vb_price }}
+      </button>
+      <p class="vb-under">Free shipping · 7-day returns · Tracked across India</p>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById('vb-root');
+  if(!root)return;
+
+  var VB_CTA_MODE='form';
+  var ROOT_URL=(window.Shopify&&window.Shopify.routes&&window.Shopify.routes.root)||'/';
+
+  var mo=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* reveal on scroll */
+  var mods=root.querySelectorAll('[data-vb-reveal]');
+  if(mo||!('IntersectionObserver' in window)){
+    mods.forEach(function(m){m.classList.add('vb-in');});
+  }else{
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('vb-in');io.unobserve(e.target);}
+      });
+    },{rootMargin:'0px 0px -12% 0px',threshold:.15});
+    mods.forEach(function(m){io.observe(m);});
+  }
+
+  /* videos: looping, no controls, no play button */
+  var vids=root.querySelectorAll('video');
+  function vbPlay(v){v.muted=true;v.play().catch(function(){});}
+
+  if('IntersectionObserver' in window){
+    var vio=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){e.target.vbOn=true;vbPlay(e.target);}
+        else{e.target.vbOn=false;e.target.pause();}
+      });
+    },{threshold:.25});
+    vids.forEach(function(v){vio.observe(v);});
+  }else{
+    vids.forEach(function(v){v.vbOn=true;vbPlay(v);});
+  }
+
+  /* some browsers block autoplay outright (Low Power Mode, data saver,
+     theme-editor iframe). the first tap is a user gesture — retry then. */
+  function vbRetry(){
+    vids.forEach(function(v){if(v.vbOn&&v.paused)vbPlay(v);});
+  }
+  document.addEventListener('touchstart',vbRetry,{passive:true});
+  document.addEventListener('click',vbRetry);
+
+  /* CTA */
+  root.addEventListener('click',function(e){
+    var btn=e.target.closest('[data-vb-atc]');
+    if(!btn)return;
+    e.preventDefault();
+    if(btn.getAttribute('data-busy')==='1')return;
+
+    if(VB_CTA_MODE==='form'){
+      var form=document.querySelector('form[action*="/cart/add"]');
+      var target=form&&(form.querySelector('[name="add"]')||form.querySelector('button[type="submit"]'))||form;
+      if(target){
+        target.scrollIntoView({behavior:mo?'auto':'smooth',block:'center'});
+        target.classList.add('vb-flash');
+        setTimeout(function(){target.classList.remove('vb-flash');},2400);
+        return;
+      }
+    }
+
+    var id=btn.getAttribute('data-vb-atc');
+    if(!id){window.location.href=ROOT_URL;return;}
+    var label=btn.textContent;
+    btn.setAttribute('data-busy','1');
+    btn.textContent='Adding…';
+    fetch(ROOT_URL+'cart/add.js',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({items:[{id:Number(id),quantity:1}]})
+    }).then(function(r){
+      if(!r.ok)return r.json().then(function(d){throw new Error(d.description||'Could not add to cart.');});
+      return r.json();
+    }).then(function(){
+      window.location.href=ROOT_URL+'cart';
+    }).catch(function(err){
+      btn.setAttribute('data-busy','0');
+      btn.textContent=label;
+      window.alert(err.message);
+    });
+  });
+})();
+</script>
