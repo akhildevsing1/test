@@ -573,7 +573,7 @@
     if(!id){window.location.href=ROOT_URL;return;}
     var label=btn.textContent;
     btn.setAttribute('data-busy','1');
-    btn.textContent='Adding…';
+    btn.textContent='Adding\u2026';
     fetch(ROOT_URL+'cart/add.js',{
       method:'POST',
       headers:{'Content-Type':'application/json','Accept':'application/json'},
