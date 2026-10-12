@@ -7,6 +7,7 @@
 
   EDIT COPY IN THE CONFIG BLOCK BELOW. Nothing else needs touching.
   Video URLs: Shopify admin → Content → Files → upload → copy link.
+  Video ratio: the video's width/height — holds its space so the page doesn't jump.
   ============================================================
 {%- endcomment -%}
 
@@ -15,26 +16,31 @@
 {%- assign v_maxw  = '400px' -%}
 
 {%- assign v1_src     = 'https://cdn.shopify.com/videos/c/vp/be8e71f6e28b4c239de5d394d61f3449/be8e71f6e28b4c239de5d394d61f3449.SD-480p-1.2Mbps-93927327.mp4' -%}
+{%- assign v1_ratio   = '688/480' -%}
 {%- assign v1_eyebrow = 'Three lights, three levels' -%}
 {%- assign v1_head    = 'Three heat settings, one button.' -%}
 {%- assign v1_body    = 'One press cycles through low, medium and high. The light on the front tells you where you are without taking it off to look.' -%}
 
 {%- assign v2_src     = 'https://cdn.shopify.com/videos/c/vp/3cb347c889e6445591b92fcbb17564b8/3cb347c889e6445591b92fcbb17564b8.SD-480p-1.5Mbps-93927328.mp4' -%}
+{%- assign v2_ratio   = '852/480' -%}
 {%- assign v2_eyebrow = 'Set it up once' -%}
 {%- assign v2_head    = 'Charge it, strap it on, forget it is there.' -%}
 {%- assign v2_body    = 'Two hours on USB-C fills it. The strap adjusts from 25 to 45 inches and stays where you put it — no re-tightening every time you stand up.' -%}
 
 {%- assign v3_src     = 'https://cdn.shopify.com/videos/c/vp/9a80b91142f746f2a6ac9b382937236c/9a80b91142f746f2a6ac9b382937236c.SD-480p-1.5Mbps-93927329.mp4' -%}
+{%- assign v3_ratio   = '688/480' -%}
 {%- assign v3_eyebrow = 'Off the charger' -%}
 {%- assign v3_head    = 'A hot water bottle starts cooling the moment you fill it.' -%}
 {%- assign v3_body    = 'This one picks a temperature and holds it there for three to four hours. No refilling. No plug. No cord trailing behind you.' -%}
 
 {%- assign v4_src     = 'https://cdn.shopify.com/videos/c/vp/d0e7e0172c2c4f9994666d4e998cda44/d0e7e0172c2c4f9994666d4e998cda44.SD-480p-1.5Mbps-93927330.mp4' -%}
+{%- assign v4_ratio   = '852/480' -%}
 {%- assign v4_eyebrow = 'Front or back' -%}
 {%- assign v4_head    = 'Belly today. Lower back tomorrow.' -%}
 {%- assign v4_body    = 'Turn the belt around and the same panel sits across your lower back. Slim enough to keep on through a work day without anyone noticing.' -%}
 
 {%- assign v5_src     = 'https://cdn.shopify.com/videos/c/vp/05a0106ccc1849f0b19a78267ea6e1b3/05a0106ccc1849f0b19a78267ea6e1b3.SD-480p-1.5Mbps-93927331.mp4' -%}
+{%- assign v5_ratio   = '722/480' -%}
 {%- assign v5_eyebrow = 'How it goes on' -%}
 {%- assign v5_head    = 'Made to be worn, not endured.' -%}
 {%- assign v5_body    = 'Every part of it is there so you can put it on in a few seconds and stop thinking about it.' -%}
@@ -47,7 +53,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"></noscript>
 
 <style>
 .vb,.vb *,.vb *::before,.vb *::after{margin:0;padding:0;box-sizing:border-box}
@@ -284,7 +291,7 @@
   <section class="vb-mod" data-vb-reveal>
     <div class="vb-wrap">
       {%- if v1_src != blank -%}
-      <div class="vb-vid vb-r"><video src="{{ v1_src }}" muted loop playsinline preload="none"></video></div>
+      <div class="vb-vid vb-r"><video src="{{ v1_src }}" style="aspect-ratio:auto {{ v1_ratio }}" muted loop playsinline preload="none"></video></div>
       {%- endif -%}
       <span class="vb-eyebrow vb-r">{{ v1_eyebrow }}</span>
       <h2 class="vb-h vb-r">{{ v1_head }}</h2>
@@ -314,7 +321,7 @@
   <section class="vb-mod" data-vb-reveal>
     <div class="vb-wrap">
       {%- if v2_src != blank -%}
-      <div class="vb-vid vb-r"><video src="{{ v2_src }}" muted loop playsinline preload="none"></video></div>
+      <div class="vb-vid vb-r"><video src="{{ v2_src }}" style="aspect-ratio:auto {{ v2_ratio }}" muted loop playsinline preload="none"></video></div>
       {%- endif -%}
       <span class="vb-eyebrow vb-r">{{ v2_eyebrow }}</span>
       <h2 class="vb-h vb-r">{{ v2_head }}</h2>
@@ -335,7 +342,7 @@
   <section class="vb-mod" data-vb-reveal>
     <div class="vb-wrap">
       {%- if v3_src != blank -%}
-      <div class="vb-vid vb-r"><video src="{{ v3_src }}" muted loop playsinline preload="none"></video></div>
+      <div class="vb-vid vb-r"><video src="{{ v3_src }}" style="aspect-ratio:auto {{ v3_ratio }}" muted loop playsinline preload="none"></video></div>
       {%- endif -%}
       <span class="vb-eyebrow vb-r">{{ v3_eyebrow }}</span>
       <h2 class="vb-h vb-r">{{ v3_head }}</h2>
@@ -376,7 +383,7 @@
   <section class="vb-mod" data-vb-reveal>
     <div class="vb-wrap">
       {%- if v4_src != blank -%}
-      <div class="vb-vid vb-r"><video src="{{ v4_src }}" muted loop playsinline preload="none"></video></div>
+      <div class="vb-vid vb-r"><video src="{{ v4_src }}" style="aspect-ratio:auto {{ v4_ratio }}" muted loop playsinline preload="none"></video></div>
       {%- endif -%}
       <span class="vb-eyebrow vb-r">{{ v4_eyebrow }}</span>
       <h2 class="vb-h vb-r">{{ v4_head }}</h2>
@@ -401,7 +408,7 @@
   <section class="vb-mod" data-vb-reveal>
     <div class="vb-wrap">
       {%- if v5_src != blank -%}
-      <div class="vb-vid vb-r"><video src="{{ v5_src }}" muted loop playsinline preload="none"></video></div>
+      <div class="vb-vid vb-r"><video src="{{ v5_src }}" style="aspect-ratio:auto {{ v5_ratio }}" muted loop playsinline preload="none"></video></div>
       {%- endif -%}
       <span class="vb-eyebrow vb-r">{{ v5_eyebrow }}</span>
       <h2 class="vb-h vb-r">{{ v5_head }}</h2>
@@ -448,55 +455,6 @@
         <div><dt>Colour</dt><dd>Pink</dd></div>
       </dl>
     </div>
-
-
-
-1. Think Before Coding
-Don't assume. Don't hide confusion. Surface tradeoffs. Before implementing:
-
-* State your assumptions explicitly.
-* If uncertain, ask.
-* If multiple interpretations exist, present them — don't pick silently.
-* If a simpler approach exists, say so. Push back when warranted.
-* If something is unclear, stop. Name what's confusing. Ask.
-
-2. Simplicity First
-Minimum code that solves the problem. Nothing speculative.
-
-* No features beyond what was asked.
-* No abstractions for single-use code.
-* No "flexibility" or "configurability" that wasn't requested.
-* No error handling for impossible scenarios.
-* If you write 200 lines and it could be 50, rewrite it.
-
-Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
-3. Surgical Changes
-Touch only what you must. Clean up only your own mess. When editing existing code:
-
-* Don't "improve" adjacent code, comments, or formatting.
-* Don't refactor things that aren't broken.
-* Match existing style, even if you'd do it differently.
-* If you notice unrelated dead code, mention it — don't delete it.
-
-When your changes create orphans:
-
-* Remove imports/variables/functions that your changes made unused.
-* Don't remove pre-existing dead code unless asked.
-
-The test: Every changed line should trace directly to the user's request.
-4. Goal-Driven Execution
-Define success criteria. Loop until verified. Transform tasks into verifiable goals:
-
-* "Add validation" → "Write tests for invalid inputs, then make them pass"
-* "Fix the bug" → "Write a test that reproduces it, then make it pass"
-* "Refactor X" → "Ensure tests pass before and after"
-
-For multi-step tasks, state a brief plan:
-
-1. [Step] → verify: [check]
-2. [Step] → verify: [check]
-3. [Step] → verify: [check]
-
   </section>
 
   <!-- objections -->
@@ -579,7 +537,7 @@ For multi-step tasks, state a brief plan:
         if(e.isIntersecting){e.target.vbOn=true;vbPlay(e.target);}
         else{e.target.vbOn=false;e.target.pause();}
       });
-    },{threshold:.25});
+    },{rootMargin:'300px 0px'});
     vids.forEach(function(v){vio.observe(v);});
   }else{
     vids.forEach(function(v){v.vbOn=true;vbPlay(v);});
