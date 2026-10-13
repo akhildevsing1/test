@@ -1,0 +1,214 @@
+{% comment %}
+  ╔═══════════════════════════════════════════════════════════════╗
+  ║  THE VIRAL VAULT — Premium Announcement Bar                  ║
+  ║  Drop this into a Custom Liquid section (replace default bar)║
+  ║                                                               ║
+  ║  HOW TO USE:                                                  ║
+  ║  1. In Theme Editor → Remove the default Announcement bar     ║
+  ║  2. Add section → Custom Liquid (at the very top)             ║
+  ║  3. Paste this entire code                                    ║
+  ║  4. Save & publish                                            ║
+  ╚═══════════════════════════════════════════════════════════════╝
+{% endcomment %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+  .vv-bar *{margin:0;padding:0;box-sizing:border-box}
+
+  .vv-bar {
+    position: relative;
+    width: 100%;
+    background: #1d1d1f;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    z-index: 9999;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .vv-ticker {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 44px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .vv-ticker-fade-left,
+  .vv-ticker-fade-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .vv-ticker-fade-left {
+    left: 0;
+    background: linear-gradient(90deg, #1d1d1f, transparent);
+  }
+  .vv-ticker-fade-right {
+    right: 0;
+    background: linear-gradient(-90deg, #1d1d1f, transparent);
+  }
+
+  .vv-ticker-track {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: vv-scroll 45s linear infinite;
+    will-change: transform;
+  }
+  .vv-ticker-track:hover {
+    animation-play-state: paused;
+  }
+  @keyframes vv-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .vv-msg {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 36px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: #f5f5f7;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .vv-accent {
+    color: #2997ff;
+    font-weight: 600;
+  }
+
+  .vv-sep {
+    flex-shrink: 0;
+    color: rgba(245,245,247,0.2);
+    font-size: 8px;
+    line-height: 1;
+    user-select: none;
+  }
+
+  .vv-countdown {
+    display: inline-flex;
+    align-items: center;
+    gap: 1px;
+    font-variant-numeric: tabular-nums;
+  }
+  .vv-countdown-unit {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2997ff;
+    min-width: 18px;
+    text-align: center;
+    letter-spacing: 0;
+  }
+  .vv-countdown-colon {
+    font-size: 13px;
+    color: rgba(41,151,255,0.45);
+    font-weight: 400;
+    margin: 0 1px;
+  }
+
+  @media (max-width: 768px) {
+    .vv-ticker { height: 40px; }
+    .vv-msg {
+      font-size: 12px;
+      padding: 0 28px;
+    }
+    .vv-ticker-fade-left,
+    .vv-ticker-fade-right { width: 40px; }
+  }
+</style>
+
+<div class="vv-bar" role="marquee" aria-label="Store announcements">
+  <div class="vv-ticker">
+    <div class="vv-ticker-fade-left"></div>
+    <div class="vv-ticker-fade-right"></div>
+
+    <div class="vv-ticker-track" id="vv-ticker-track">
+
+      <span class="vv-msg">
+        Summer Sale — Up to <span class="vv-accent">&nbsp;50% off&nbsp;</span> sitewide
+      </span>
+      <span class="vv-sep">●</span>
+
+      <span class="vv-msg">
+        <span class="vv-accent">Free shipping&nbsp;</span> all over India
+      </span>
+      <span class="vv-sep">●</span>
+
+      <span class="vv-msg">
+        Sale ends in&nbsp;
+        <span class="vv-countdown">
+          <span class="vv-countdown-unit" id="vv-hrs">00</span>
+          <span class="vv-countdown-colon">:</span>
+          <span class="vv-countdown-unit" id="vv-min">00</span>
+          <span class="vv-countdown-colon">:</span>
+          <span class="vv-countdown-unit" id="vv-sec">00</span>
+        </span>
+      </span>
+      <span class="vv-sep">●</span>
+
+      <span class="vv-msg">
+        Extra <span class="vv-accent">&nbsp;10% off&nbsp;</span> on prepaid orders
+      </span>
+      <span class="vv-sep">●</span>
+
+      <span class="vv-msg">
+        <span class="vv-accent">7-day&nbsp;</span> money-back guarantee
+      </span>
+      <span class="vv-sep">●</span>
+
+      <span class="vv-msg">
+        <span class="vv-accent">10,000+</span>&nbsp;happy customers across India
+      </span>
+      <span class="vv-sep">●</span>
+
+      <span class="vv-msg">
+        Cash on delivery <span class="vv-accent">&nbsp;available&nbsp;</span> pan India
+      </span>
+      <span class="vv-sep">●</span>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  var track = document.getElementById('vv-ticker-track');
+  if (track) track.innerHTML += track.innerHTML;
+
+  function updateCountdown() {
+    var now = new Date();
+    var istOffset = 5.5 * 60 * 60 * 1000;
+    var nowIST = new Date(now.getTime() + istOffset);
+    var midnight = new Date(nowIST);
+    midnight.setHours(23, 59, 59, 999);
+
+    var diff = Math.max(0, midnight - nowIST);
+    var h = Math.floor(diff / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    var pad = function(n) { return String(n).padStart(2, '0'); };
+
+    document.querySelectorAll('#vv-hrs').forEach(function(el) { el.textContent = pad(h); });
+    document.querySelectorAll('#vv-min').forEach(function(el) { el.textContent = pad(m); });
+    document.querySelectorAll('#vv-sec').forEach(function(el) { el.textContent = pad(s); });
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  if (track) {
+    track.style.animationDuration = (track.scrollWidth / 2 / 50) + 's';
+  }
+})();
+</script>
