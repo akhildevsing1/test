@@ -186,7 +186,7 @@
     var istOffset = 5.5 * 60 * 60 * 1000;
     var nowIST = new Date(now.getTime() + istOffset);
     var midnight = new Date(nowIST);
-    midnight.setHours(23, 59, 59, 999);
+    midnight.setUTCHours(23, 59, 59, 999);
 
     var diff = Math.max(0, midnight - nowIST);
     var h = Math.floor(diff / 3600000);
