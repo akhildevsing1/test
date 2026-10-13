@@ -90,6 +90,11 @@
 .vb-in .vb-r{opacity:1;transform:none}
 .vb-in .vb-r:nth-child(2){transition-delay:.06s}
 .vb-in .vb-r:nth-child(3){transition-delay:.12s}
+/* script didn't run (e.g. theme editor preview after an edit): show everything */
+.vb:not(.vb-js) .vb-r{opacity:1;transform:none}
+.vb:not(.vb-js) .vb-chart .ln{stroke-dashoffset:0}
+.vb:not(.vb-js) .vb-chart .area,.vb:not(.vb-js) .vb-chart .dot{opacity:1}
+.vb:not(.vb-js) .vb-scale-track i{width:100%}
 
 /* ---- video ---- */
 .vb-vid{margin:0 auto 26px;border-radius:14px;overflow:hidden;
@@ -260,6 +265,7 @@
 </style>
 
 <div class="vb" id="vb-root">
+<script>document.getElementById('vb-root').classList.add('vb-js')</script>
 
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
     <linearGradient id="vbHot" x1="0" y1="0" x2="1" y2="0">
